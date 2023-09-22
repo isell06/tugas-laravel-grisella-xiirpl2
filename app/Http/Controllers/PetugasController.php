@@ -55,6 +55,8 @@ class PetugasController extends Controller
     public function show(string $id)
     {
         //
+        $petugass = DB::table('petugass')->where('id' , $id)->get();
+        return view('perpustakaan.petugas.show' , compact('petugass'));
     }
 
     /**
@@ -63,6 +65,8 @@ class PetugasController extends Controller
     public function edit(string $id)
     {
         //
+        $petugass = DB::table('petugass')->where('id' , $id)->get();
+        return view('perpustakaan.petugas.edit' , compact('petugass'));
     }
 
     /**
@@ -71,6 +75,22 @@ class PetugasController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'nama_petugas' => 'required',
+            'jabatan_petugas' => 'required',
+            'no_telp_petugas' => 'required|max:13',
+            'alamat_petugas' => 'required|min:20',
+        ]);
+
+        $query = DB::table('petugass')->where('id' , $id)->update([ 
+            'nama_petugas' => $request['nama_petugas'],
+            'jabatan_petugas' => $request['jabatan_petugas'],
+            'no_telp_petugas' => $request['no_telp_petugas'],
+            'alamat_petugas' => $request['alamat_petugas'],
+        ]);
+
+        return redirect()->route('petugas.index');
+
     }
 
     /**
@@ -79,5 +99,7 @@ class PetugasController extends Controller
     public function destroy(string $id)
     {
         //
+        $query = DB::table('petugass')->where('id', $id)->delete();
+        return redirect()->route('petugas.index');
     }
 }

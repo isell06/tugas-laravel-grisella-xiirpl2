@@ -48,12 +48,6 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/buku/create" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>Form Buku</p>
-            </a>
-          </li>
-          <li class="nav-item">
             <a href="/petugas/create" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>Form Petugas</p>

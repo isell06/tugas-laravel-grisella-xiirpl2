@@ -36,6 +36,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+                <a href="{{ route('petugas.create') }}" class="btn btn-success btn-sm mb-2 float-right"><i class="fas fa-plus"></i> Tambah</a>
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
@@ -56,9 +57,13 @@
                             <td>{{ $value->no_telp_petugas }}</td>                            
                             <td>{{ $value->alamat_petugas }}</td>
                             <td>
-                                <a href="" class="btn-sm btn-info">Show</a>
-                                <a href="" class="btn-sm btn-warning">Edit</a>
-                                <a href="" class="btn-sm btn-danger">Delete</a>
+                              <form action="{{ route('petugas.destroy', $value->id) }}" method="post">
+                              @csrf 
+                              @method('DELETE')
+                                <a href="{{ route('petugas.show', $value->id) }}" class="btn-sm btn-info">Show</a>
+                                <a href="{{ route('petugas.edit', $value->id) }}" class="btn-sm btn-warning">Edit</a>
+                                <button type="submit" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapusData">Delete
+                              </form>
                             </td>
                         </tr>
                     @empty
@@ -68,6 +73,25 @@
                     @endforelse
                   </tbody>
                 </table>
+
+                <!-- Modal -->
+                <div class="modal" id="hapusData">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="hapusData">Menghapus Data</h5>
+                      </div>
+                      <div class="modal-body">
+                        Anda yakin ingin menghapus data ini?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary">Back</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
                 <div class="row">
                       <div class="col-sm-12 col-md-7 pt-4">
                         <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
