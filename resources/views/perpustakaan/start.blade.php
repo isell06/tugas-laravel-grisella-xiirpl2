@@ -9,7 +9,7 @@
                 <h6 class="card-title">Silahkan isi Form Anggota ini</h6>
 
                 <p class="card-text">Isi dengan data asli Anda.</p>
-                <a href="/anggota/create" class="btn btn-primary">Form Anggota</a>
+                <a href="{{ route('anggotas.create') }}" class="btn btn-primary">Form Anggota</a>
               </div>
             </div>
 

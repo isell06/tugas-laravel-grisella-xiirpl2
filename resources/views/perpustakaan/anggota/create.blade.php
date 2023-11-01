@@ -1,4 +1,8 @@
         @extends('layouts.master')
+        
+        @push('css')
+
+        @endpush
 
         @section('content')
             <!--ISI-->
@@ -8,16 +12,16 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{ route('anggota.store') }}" method="POST">
+              <form action="{{ route('anggotas.store') }}" method="POST">
                 @csrf 
                 <div class="card-body">
                     <div class="form-group">
                         <label for="kodeAnggota">Kode Anggota :</label>
-                        <input type="text" class="form-control" name="kode_anggota" id="kodeAnggota" placeholder="Masukkan Kode">
+                        <input type="text" class="form-control" name="kode_anggota" id="kodeAnggota" placeholder="Masukkan Kode" value="{{ old('kode_anggota') }}">
                     </div>
                     <div class="form-group">
                         <label for="namaAnggota">Nama Anggota :</label>
-                        <input type="text" class="form-control" name="nama_anggota" id="namaAnggota" placeholder="Masukkan Nama">
+                        <input type="text" class="form-control" name="nama_anggota" id="namaAnggota" placeholder="Masukkan Nama" value="{{ old('nama_anggota') }}">
                     </div>
                     <div class="form-group">
                         <label for="jkAnggota">Jenis Kelamin Anggota :</label>
@@ -44,17 +48,17 @@
                     </div>
                     <div class="form-group">
                         <label for="noTelp">No. Telepon Anggota :</label>
-                        <input type="text" class="form-control" name="no_telp_anggota" id="noTelp" placeholder="Masukkan No. Telepon">
+                        <input type="text" class="form-control" name="no_telp_anggota" id="noTelp" placeholder="Masukkan No. Telepon" value="{{ old('no_telp_anggota') }}">
                     </div>
                     <div class="form-group">
                         <label>Alamat Anggota :</label>
-                        <textarea class="form-control" name="alamat_anggota" id="alamatAnggota" rows="3" placeholder="Masukkan Alamat"></textarea>
+                        <textarea class="form-control" name="alamat_anggota" id="alamatAnggota" rows="3" placeholder="Masukkan Alamat" value="{{ old('alamat_anggota') }}"></textarea>
                     </div>  
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
-                    <a href="{{ route('anggota.index') }}" class="btn btn-danger float-right"><i class="fas fa-close"></i>Back</a>
+                    <a href="{{ route('anggotas.index') }}" class="btn btn-danger float-right"><i class="fas fa-close"></i>Back</a>
                 </div>
               </form>
             </div>

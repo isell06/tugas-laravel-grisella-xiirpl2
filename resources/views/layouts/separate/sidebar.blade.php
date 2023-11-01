@@ -13,7 +13,7 @@
           <img src="template/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Grisella Naomi A</a>
+          <a href="{{ route('anggotas.edit', Auth::user()->id) }}" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -34,24 +34,30 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="/" class="nav-link active">
+          <!-- <li class="nav-item menu-open">
+            <a href="/" class="nav-link ">
               <p>
                 Starter Pages
               </p>
             </a>
-          </li>
+          </li> -->
+            <li class="nav-item">
+              <a href="{{ route('anggotas.index') }}" class="nav-link @if (Request::segment(1) == 'anggotas') active @endif">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Data Anggota</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('petugass.index') }}" class="nav-link @if (Request::segment(1) == 'petugass') active @endif">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Data Petugas</p> 
+              </a>
+            </li>
           <li class="nav-item">
-            <a href="/anggota/create" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>Form Anggota</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/petugas/create" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>Form Petugas</p>
-            </a>
+            <form action="{{ route('auth.logout') }}" method="POST">
+              @csrf
+              <button type="submit" class="nav-link btn btn-warning">Logout</button>
+            </form>
           </li>
         </ul>
       </nav>

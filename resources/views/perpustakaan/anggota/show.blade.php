@@ -29,20 +29,20 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="kodeAnggota">Kode Anggota :</label>
-                    <input type="text" name="kode_anggota" id="kodeAnggota" class="form-control"  placeholder="Masukkan Kode Anggota" value="{{ $anggotas[0]->kode_anggota }}" disabled>
+                    <input type="text" name="kode_anggota" id="kodeAnggota" class="form-control"  placeholder="Masukkan Kode Anggota" value="{{ $anggota->kode_anggota }}" disabled>
                   </div>
                   <div class="form-group">
                     <label for="namaAnggota">Nama Anggota :</label>
-                    <input type="text" name="nama_anggota" id="namaAnggota" class="form-control" placeholder="Masukkan Nama Anggota" value="{{ $anggotas[0]->nama_anggota }}" disabled>
+                    <input type="text" name="nama_anggota" id="namaAnggota" class="form-control" placeholder="Masukkan Nama Anggota" value="{{ $anggota->nama_anggota }}" disabled>
                   </div>
                   <div class="form-group">
                     <label for="jkAnggota">Jenis Kelamin Anggota :</label>
-                    <input type="text" name="jk_anggota" id="jkAnggota" class="form-control" placeholder="Masukkan Jenis Kelamin Anggota" value="{{ $anggotas[0]->jk_anggota }}" disabled>
+                    <input type="text" name="jk_anggota" id="jkAnggota" class="form-control" placeholder="Masukkan Jenis Kelamin Anggota" value="{{ $anggota->jk_anggota }}" disabled>
                   </div>
                   <div class="form-group">
                       <label>Jurusan Anggota :</label>
                         <select class="custom-select" name="jurusan_anggota" id="jurusanAnggota" disabled>
-                        <option selected> {{ $anggotas[0]->jurusan_anggota }} </option>
+                        <option selected> {{ $anggota->jurusan_anggota }} </option>
                         <option value="">Pilih Jurusan</option>
                         <option value="RPL">Rekayasa Perangkat Lunak</option>
                         <option value="TP">Teknik Pemesinan</option>
@@ -54,18 +54,18 @@
                   </div>
                   <div class="form-group">
                       <label for="noTelp">No. Telepon Anggota :</label>
-                      <input type="text" class="form-control" name="no_telp_anggota" id="noTelp" placeholder="Masukkan No. Telepon" value="{{ $anggotas[0]->no_telp_anggota }}"disabled>
+                      <input type="text" class="form-control" name="no_telp_anggota" id="noTelp" placeholder="Masukkan No. Telepon" value="{{ $anggota->no_telp_anggota }}"disabled>
                   </div>
                   <div class="form-group">
                       <label>Alamat Anggota :</label>
-                      <textarea class="form-control" name="alamat_anggota" id="alamatAnggota" rows="3" placeholder="Masukkan Alamat" disabled>{{ $anggotas[0]->alamat_anggota }}</textarea>
+                      <textarea class="form-control" name="alamat_anggota" id="alamatAnggota" rows="3" placeholder="Masukkan Alamat" disabled>{{ $anggota->alamat_anggota }}</textarea>
                   </div>  
                 </div>
                 <!-- /.card-body -->
             </div>
 
                 <div class="card-footer">
-                  <a href="{{ route('anggota.index') }}" class="btn btn-danger"><i class="fas fa-close"></i>Back</a>
+                  <a href="{{ route('anggotas.index') }}" class="btn btn-danger"><i class="fas fa-close"></i>Back</a>
                 </div>
 
             @endsection

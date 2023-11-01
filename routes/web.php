@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\BukuController;
-use App\Http\Controllers\RakController;
+use App\Http\Controllers\AuthController;
 
 
 /*
@@ -20,27 +20,23 @@ use App\Http\Controllers\RakController;
 
 Route::get('/', function () {
     return view('perpustakaan.start');
+})->middleware('auth');
+
+Route::resource('anggotas', AnggotaController::class);
+
+Route::resource('petugass', PetugasController::class);
+
+Route::controller(AuthController::class)->group(function() {
+    //register form
+    Route::get('/register', 'register')->name('auth.register');
+    //store register 
+    Route::post('/store', 'store')->name('auth.store');
+    //login form
+    Route::get('/login', 'login')->name('auth.login');
+    //auth proses
+    Route::post('/auth', 'auth')->name('auth.authentication');
+    //logout
+    Route::post('/logout', 'logout')->name('auth.logout');
+    //dashboard page
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
 });
-
-Route::resource('anggota', AnggotaController::class);
-
-Route::resource('petugas', PetugasController::class);
-
-//Route::resource('buku', BukuController::class);
-
-Route::resource('rak', RakController::class);
-
-
-/*Route::get('/about', function () {
-    return view('layouts.master');
-});
-
-Route::get('/content', function () {
-    return view('layouts.content.index');
-});
-
-Route::get('/create', function () {
-    return view('layouts.content.create');
-});*/
-
-

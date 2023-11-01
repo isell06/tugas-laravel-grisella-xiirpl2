@@ -36,7 +36,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <a href="{{ route('anggota.create') }}" class="btn btn-success btn-sm mb-2 float-right"><i class="fas fa-plus"></i> Tambah</a>
+                <a href="{{ route('anggotas.create') }}" class="btn btn-success btn-sm mb-2 float-right"><i class="fas fa-plus"></i> Tambah</a>
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
@@ -61,11 +61,11 @@
                             <td>{{ $value->no_telp_anggota }}</td>                            
                             <td>{{ $value->alamat_anggota }}</td>
                             <td>
-                                <form action="{{ route('anggota.destroy', $value->id) }}" method="post">
+                                <form action="{{ route('anggotas.destroy', $value->id) }}" method="post">
                                   @csrf 
                                   @method('DELETE')
-                                <a href="{{ route('anggota.show', $value->id) }}" class="btn-sm btn-info">Show</a>
-                                <a href="{{ route('anggota.edit', $value->id) }}" class="btn-sm btn-warning">Edit</a>
+                                <a href="{{ route('anggotas.show', $value->id) }}" class="btn-sm btn-info">Show</a>
+                                <a href="{{ route('anggotas.edit', $value->id) }}" class="btn-sm btn-warning">Edit</a>
                                 <button type="submit" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapusData">Delete
                                 </form>
                             </td>

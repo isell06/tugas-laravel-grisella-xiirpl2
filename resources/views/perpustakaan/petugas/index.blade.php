@@ -36,7 +36,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <a href="{{ route('petugas.create') }}" class="btn btn-success btn-sm mb-2 float-right"><i class="fas fa-plus"></i> Tambah</a>
+                <a href="{{ route('petugass.create') }}" class="btn btn-success btn-sm mb-2 float-right"><i class="fas fa-plus"></i> Tambah</a>
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
@@ -57,11 +57,11 @@
                             <td>{{ $value->no_telp_petugas }}</td>                            
                             <td>{{ $value->alamat_petugas }}</td>
                             <td>
-                              <form action="{{ route('petugas.destroy', $value->id) }}" method="post">
+                              <form action="{{ route('petugass.destroy', $value->id) }}" method="post">
                               @csrf 
                               @method('DELETE')
-                                <a href="{{ route('petugas.show', $value->id) }}" class="btn-sm btn-info">Show</a>
-                                <a href="{{ route('petugas.edit', $value->id) }}" class="btn-sm btn-warning">Edit</a>
+                                <a href="{{ route('petugass.show', $value->id) }}" class="btn-sm btn-info">Show</a>
+                                <a href="{{ route('petugass.edit', $value->id) }}" class="btn-sm btn-warning">Edit</a>
                                 <button type="submit" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapusData">Delete
                               </form>
                             </td>

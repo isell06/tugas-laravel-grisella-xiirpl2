@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anggota;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class AnggotaController extends Controller
 {
@@ -13,7 +13,7 @@ class AnggotaController extends Controller
     public function index()
     {
         //
-        $anggotas = DB::table('anggotas')->get();
+        $anggotas = Anggota::all();
         return view('perpustakaan.anggota.index', compact('anggotas'));
     }
 
@@ -29,7 +29,7 @@ class AnggotaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request , Anggota $anggota)
     {
         //
         $request->validate([
@@ -37,46 +37,48 @@ class AnggotaController extends Controller
             'nama_anggota' => 'required',
             'jk_anggota' => 'required',
             'jurusan_anggota' => 'required',
-            'no_telp_anggota' => 'required|max:13',
+            'no_telp_anggota' => 'required|min:11|max:13',
             'alamat_anggota' => 'required|max:200',
         ]);
 
-        $query = DB::table('anggotas')->insert([
-            'kode_anggota' => $request['kode_anggota'],
-            'nama_anggota' => $request['nama_anggota'],
-            'jk_anggota' => $request['jk_anggota'],
-            'jurusan_anggota' => $request['jurusan_anggota'],
-            'no_telp_anggota' => $request['no_telp_anggota'],
-            'alamat_anggota' => $request['alamat_anggota'],
-        ]);
+        $anggota = new Anggota;
+ 
+        $anggota->kode_anggota = $request->kode_anggota;
+        $anggota->nama_anggota = $request->nama_anggota;
+        $anggota->jk_anggota = $request->jk_anggota;
+        $anggota->jurusan_anggota = $request->jurusan_anggota;
+        $anggota->no_telp_anggota = $request->no_telp_anggota;
+        $anggota->alamat_anggota = $request->alamat_anggota;
 
-        return redirect('/anggota');
+        $anggota->save();
+
+        return redirect()->route('anggotas.index');
+
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Anggota $anggota)
     {
         //
-        $anggotas = DB::table('anggotas')->where('id' , $id)->get();
-        return view('perpustakaan.anggota.show' , compact('anggotas'));
+        return view('perpustakaan.anggota.show' , compact('anggota'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Anggota $anggota)
     {
         //
-        $anggotas = DB::table('anggotas')->where('id' , $id)->get();
-        return view('perpustakaan.anggota.edit' , compact('anggotas'));
+        return view('perpustakaan.anggota.edit' , compact('anggota'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Anggota $anggota)
     {
         //
         $request->validate([
@@ -88,25 +90,18 @@ class AnggotaController extends Controller
             'alamat_anggota' => 'required|max:200',
         ]);
 
-        $query = DB::table('anggotas')->where('id' , $id)->update([
-            'kode_anggota' => $request['kode_anggota'],
-            'nama_anggota' => $request['nama_anggota'],
-            'jk_anggota' => $request['jk_anggota'],
-            'jurusan_anggota' => $request['jurusan_anggota'],
-            'no_telp_anggota' => $request['no_telp_anggota'],
-            'alamat_anggota' => $request['alamat_anggota'],
-        ]);
+        $anggota->update($request->all());
 
-        return redirect('/anggota');
+        return redirect()->route('anggotas.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Anggota $anggota)
     {
         //
-        $query = DB::table('anggotas')->where('id', $id)->delete();
-        return redirect()->route('anggota.index');
+        $anggotas = Anggota::where('id', $anggota->id)->delete();
+        return redirect()->route('anggotas.index');
     }
 }

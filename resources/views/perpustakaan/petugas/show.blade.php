@@ -29,12 +29,12 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="namaPetugas">Nama Petugas :</label>
-                        <input type="text" class="form-control" name="nama_petugas" id="namaPetugas" placeholder="Masukkan Nama" value="{{ $petugass[0]->nama_petugas }}"disabled>
+                        <input type="text" class="form-control" name="nama_petugas" id="namaPetugas" placeholder="Masukkan Nama" value="{{ $petugass->nama_petugas }}"disabled>
                     </div>
                     <div class="form-group">
                         <label>Jabatan Petugas :</label>
                         <select class="custom-select" name="jabatan_petugas" disabled>
-                        <option selected> {{ $petugass[0]->jabatan_petugas }} </option>
+                        <option selected> {{ $petugass->jabatan_petugas }} </option>
                         <option value="">Pilih Jabatan</option>
                         <option value="kepala-perpus">Kepala Perpustakaan</option>
                         <option value="asisten-kepala-perpus">Asisten Kepala Perpustakaan</option>
@@ -44,18 +44,18 @@
                     </div>
                     <div class="form-group">
                         <label for="noTelp">No. Telepon Petugas :</label>
-                        <input type="text" class="form-control" name="no_telp_petugas" id="noTelp" placeholder="Masukkan No. Telepon" value="{{ $petugass[0]->no_telp_petugas }}" disabled>
+                        <input type="text" class="form-control" name="no_telp_petugas" id="noTelp" placeholder="Masukkan No. Telepon" value="{{ $petugass->no_telp_petugas }}" disabled>
                     </div>
                     <div class="form-group">
                         <label>Alamat Petugas :</label>
-                        <textarea class="form-control" name="alamat_petugas" id="alamatPetugas" rows="3" placeholder="Masukkan Alamat" disabled>{{ $petugass[0]->alamat_petugas }}</textarea>
+                        <textarea class="form-control" name="alamat_petugas" id="alamatPetugas" rows="3" placeholder="Masukkan Alamat" disabled>{{ $petugass->alamat_petugas }}</textarea>
                     </div>  
                 </div>
                 <!-- /.card-body -->
             </div>
 
                 <div class="card-footer">
-                  <a href="{{ route('petugas.index') }}" class="btn btn-danger"><i class="fas fa-close"></i>Back</a>
+                  <a href="{{ route('petugass.index') }}" class="btn btn-danger"><i class="fas fa-close"></i>Back</a>
                 </div>
 
 @endsection
