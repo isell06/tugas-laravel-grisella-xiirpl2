@@ -13,6 +13,8 @@ class RakController extends Controller
     public function index()
     {
         //
+        $raks = Rak::all();
+        return view('perpustakaan.rak.index', compact('raks'));
     }
 
     /**
@@ -21,6 +23,7 @@ class RakController extends Controller
     public function create()
     {
         //
+        return view('perpustakaan.rak.create');
     }
 
     /**
@@ -29,6 +32,25 @@ class RakController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'nama_rak'      => 'required|unique:raks',
+            'lokasi_rak'    => 'required|unique:raks'
+        ],[
+            'nama_rak.required'     => 'Nama rak harus diisi!',
+            'nama_rak.unique'       => 'Nama rak sudah ada!',
+            'lokasi_rak.required'   => 'Lokasi rak harus diisi!',
+            'lokasi_rak.unique'     => 'Lokasi rak sudah ada!',
+        ]);
+
+        $rak = new Rak;
+ 
+        $rak->nama_rak = $request->nama_rak;
+        $rak->lokasi_rak = $request->lokasi_rak;
+ 
+        $rak->save();
+
+        return redirect()->route('rak.index');
+
     }
 
     /**
@@ -45,6 +67,7 @@ class RakController extends Controller
     public function edit(Rak $rak)
     {
         //
+        return view('perpustakaan.rak.edit', compact('rak'));
     }
 
     /**
@@ -53,6 +76,22 @@ class RakController extends Controller
     public function update(Request $request, Rak $rak)
     {
         //
+        $request->validate([
+            'nama_rak'      => 'required|unique:raks',
+            'lokasi_rak'    => 'required|unique:raks'
+        ],[
+            'nama_rak.required'     => 'Nama rak harus diisi!',
+            'nama_rak.unique'       => 'Nama rak sudah ada!',
+            'lokasi_rak.required'   => 'Lokasi rak harus diisi!',
+            'lokasi_rak.unique'     => 'Lokasi rak sudah ada!',
+        ]);
+
+        $rak->nama_rak = $request->nama_rak;
+        $rak->lokasi_rak = $request->lokasi_rak;
+ 
+        $rak->save();
+
+        return redirect()->route('rak.index');
     }
 
     /**
@@ -61,5 +100,7 @@ class RakController extends Controller
     public function destroy(Rak $rak)
     {
         //
+        $rak = Rak::where('id', $rak->id)->delete();
+        return redirect()->route('rak.index');
     }
 }

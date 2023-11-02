@@ -5,6 +5,7 @@ use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RakController;
 
 
 /*
@@ -22,9 +23,14 @@ Route::get('/', function () {
     return view('perpustakaan.start');
 })->middleware('auth');
 
-Route::resource('anggotas', AnggotaController::class);
 
-Route::resource('petugass', PetugasController::class);
+Route::resource('anggotas', AnggotaController::class)->middleware('auth');
+
+Route::resource('petugass', PetugasController::class)->middleware('auth');
+
+Route::resource('rak', RakController::class)->middleware('auth');
+
+Route::resource('buku', BukuController::class)->middleware('auth');
 
 Route::controller(AuthController::class)->group(function() {
     //register form

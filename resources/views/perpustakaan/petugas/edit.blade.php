@@ -35,35 +35,35 @@
                         <input type="text" class="form-control @error('nama_petugas') is-invalid @enderror" name="nama_petugas" id="namaPetugas" placeholder="Masukkan Nama" value="{{ $petugass->nama_petugas }}">
                     </div>
                     @error('nama_petugas')
-                    <div class="alert alert-danger">{{ $message }}</div>
+                    <div class="text text-danger">{{ $message }}</div>
                     @enderror
                     <div class="form-group">
-                        <label>Jabatan Petugas :</label>
-                        <select class="custom-select" name="jabatan_petugas @error('jabatan_petugas') is-invalid @enderror">
-                        <option selected> {{ $petugass->jabatan_petugas }} </option>
-                        <option value="">Pilih Jabatan</option>
-                        <option value="kepala-perpus">Kepala Perpustakaan</option>
-                        <option value="asisten-kepala-perpus">Asisten Kepala Perpustakaan</option>
-                        <option value="admin">Administrasi</option>
-                        <option value="Lainnya">DLL</option>
-                        </select>
+                      <label>Jabatan Petugas :</label>
+                      <select class="custom-select @error('jabatan_petugas') is-invalid @enderror" name="jabatan_petugas" id="jabatanPetugas">
+                      <option selected> {{ $petugass->jabatan_petugas }} </option>
+                      <option value="">Pilih Jurusan</option>
+                      <option value="kepala-perpus">Kepala Perpustakaan</option>
+                      <option value="asisten-kepala-perpus">Asisten Kepala Perpustakaan</option>
+                      <option value="admin">Administrasi</option>
+                      <option value="Lainnya">DLL</option>
+                      </select>
                     </div>
                     @error('jabatan_petugas')
-                    <div class="alert alert-danger">{{ $message }}</div>
+                    <div class="text text-danger">{{ $message }}</div>
                     @enderror
                     <div class="form-group">
                         <label for="noTelp">No. Telepon Petugas :</label>
                         <input type="text" class="form-control @error('no_telp_petugas') is-invalid @enderror" name="no_telp_petugas" id="noTelp" placeholder="Masukkan No. Telepon" value="{{ $petugass->no_telp_petugas }}">
                     </div>
                     @error('no_telp_petugas')
-                    <div class="alert alert-danger">{{ $message }}</div>
+                    <div class="text text-danger">{{ $message }}</div>
                     @enderror
                     <div class="form-group">
                         <label>Alamat Petugas :</label>
                         <textarea class="form-control @error('alamat_petugas') is-invalid @enderror" name="alamat_petugas" id="alamatPetugas" rows="3" placeholder="Masukkan Alamat">{{ $petugass->alamat_petugas }}</textarea>
                     </div> 
                     @error('alamat_petugas')
-                    <div class="alert alert-danger">{{ $message }}</div>
+                    <div class="text text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <!-- /.card-body -->

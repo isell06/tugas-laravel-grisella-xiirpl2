@@ -53,6 +53,12 @@
                 <p>Data Petugas</p> 
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ route('rak.index') }}" class="nav-link @if (Request::segment(1) == 'rak') active @endif">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Data Rak</p>
+              </a>
+            </li>
           <li class="nav-item">
             <form action="{{ route('auth.logout') }}" method="POST">
               @csrf

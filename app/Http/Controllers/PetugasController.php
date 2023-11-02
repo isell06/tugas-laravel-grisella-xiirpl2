@@ -55,10 +55,10 @@ class PetugasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Petugas $petugass)
+    public function show(Petugas $petugas)
     {
         //
-        return view('perpustakaan.petugas.show' , compact('petugass'));
+        return view('perpustakaan.petugas.show' , compact('petugas'));
     }
 
     /**

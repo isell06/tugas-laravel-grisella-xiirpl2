@@ -17,9 +17,12 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="namaPetugas">Nama Petugas :</label>
-                            <input type="text" class="form-control" name="nama_petugas" id="namaPetugas" placeholder="Masukkan Nama" value="{{ old('nama_petugas') }}">
+                            <input type="text" class="form-control @error('nama_petugas') is-invalid @enderror" name="nama_petugas" id="namaPetugas" placeholder="Masukkan Nama" value="{{ old('nama_petugas') }}">
                         </div>
-                        <div class="form-group">
+                        @error('nama_petugas')
+                        <div class="text text-danger">{{ $message }}</div>
+                        @enderror
+                        <div class="form-group @error('jabatan_petugas') is-invalid @enderror">
                             <label>Jabatan Petugas :</label>
                             <select class="custom-select" name="jabatan_petugas">
                             <option value="">Pilih Jabatan</option>
@@ -29,14 +32,23 @@
                             <option value="Lainnya">DLL</option>
                             </select>
                         </div>
-                        <div class="form-group">
+                        @error('jabatan_petugas')
+                        <div class="text text-danger">{{ $message }}</div>
+                        @enderror
+                        <div class="form-group ">
                             <label for="noTelp">No. Telepon Petugas :</label>
-                            <input type="text" class="form-control" name="no_telp_petugas" id="noTelp" placeholder="Masukkan No. Telepon" value="{{ old('no_telp_petugas') }}">
+                            <input type="text" class="form-control @error('no_telp_petugas') is-invalid @enderror" name="no_telp_petugas" id="noTelp" placeholder="Masukkan No. Telepon" value="{{ old('no_telp_petugas') }}">
                         </div>
+                        @error('no_telp_petugas')
+                        <div class="text text-danger">{{ $message }}</div>
+                        @enderror
                         <div class="form-group">
                             <label>Alamat Petugas :</label>
-                            <textarea class="form-control" name="alamat_petugas" id="alamatPetugas" rows="3" placeholder="Masukkan Alamat" value="{{ old('alamat_petugas') }}"></textarea>
+                            <textarea class="form-control @error('alamat_petugas') is-invalid @enderror" name="alamat_petugas" id="alamatPetugas" rows="3" placeholder="Masukkan Alamat" value="{{ old('alamat_petugas') }}"></textarea>
                         </div>  
+                        @error('alamat_petugas')
+                        <div class="text text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
