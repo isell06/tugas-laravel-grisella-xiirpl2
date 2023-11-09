@@ -6,6 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Anggota;
+use App\Models\Buku;
+use App\Models\Rak;
 
 class AuthController extends Controller
 {    
@@ -83,6 +86,13 @@ class AuthController extends Controller
     // dasboard page
     public function dashboard()
     {
+
+
+        $jumlah_anggota = Anggota::count();
+        $jumlah_buku = Buku::count();
+        $jumlah_rak = Rak::count();
+
+        return view('auth.dashboard',compact('jumlah_anggota','jumlah_buku','jumlah_rak'));
         if(Auth::check())
         {
             return view('auth.dashboard');

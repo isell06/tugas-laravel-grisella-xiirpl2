@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Rak;
+use App\Models\Pinjam;
 
 class Buku extends Model
 {
@@ -24,5 +25,9 @@ class Buku extends Model
     public function rak()
     {
         return $this->belongsTo(Rak::class, 'id', 'rak_id');
+    }
+
+    public function pinjam() {
+        return $this->hasMany(Pinjam::class, 'id', 'buku_id');
     }
 }

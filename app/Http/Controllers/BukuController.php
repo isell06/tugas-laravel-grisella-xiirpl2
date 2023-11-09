@@ -80,7 +80,7 @@ class BukuController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Buku $buku)
+    public function update(Request $request, Buku $buku, Rak $rak)
     {
         //
         $request->validate([
@@ -93,7 +93,15 @@ class BukuController extends Controller
             'rak_id'        => 'required'
         ]);
 
-        $buku->update($request->all());
+        $buku->kode_buku = $request->kode_buku;
+        $buku->judul_buku = $request->judul_buku;
+        $buku->penulis_buku = $request->penulis_buku;
+        $buku->penerbit_buku = $request->penerbit_buku;
+        $buku->tahun_terbit = $request->tahun_terbit;
+        $buku->stok = $request->stok;
+        $buku->rak_id = $rak->rak_id;
+
+        $buku->save();
 
         return redirect()->route('buku.index');
     }

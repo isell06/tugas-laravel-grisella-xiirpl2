@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Pinjam;
 
 class Anggota extends Model
 {
@@ -18,4 +19,8 @@ class Anggota extends Model
         'no_telp_anggota',
         'alamat_anggota'
     ];
+
+    public function pinjam() {
+        return $this->hasMany(Anggota::class, 'id', 'anggota_id');
+    }
 }

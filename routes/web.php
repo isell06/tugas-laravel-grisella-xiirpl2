@@ -6,6 +6,7 @@ use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RakController;
+use App\Http\Controllers\PinjamController;
 
 
 /*
@@ -31,6 +32,8 @@ Route::resource('petugass', PetugasController::class)->middleware('auth');
 Route::resource('rak', RakController::class)->middleware('auth');
 
 Route::resource('buku', BukuController::class)->middleware('auth');
+
+Route::resource('peminjaman', PinjamController::class)->middleware('auth');
 
 Route::controller(AuthController::class)->group(function() {
     //register form
